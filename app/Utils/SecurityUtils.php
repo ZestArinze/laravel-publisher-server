@@ -53,7 +53,7 @@ class SecurityUtils {
         // use the client secret to compute the mac
         $mac = base64_encode(hash_hmac('sha256', $clientId, $clientSecret, true));    
 
-        if($mac !== null && $mac === $macString) {
+        if($mac !== null && hash_equals($mac, $macString)) {
             return $subscriber;
         }
 
